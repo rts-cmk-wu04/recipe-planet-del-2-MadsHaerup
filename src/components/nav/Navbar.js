@@ -7,10 +7,9 @@ export default function Navbar() {
   const [navlink, setNavlink] = useState([]);
 
   useEffect(() => {
-   
     axios.get('http://localhost:1337/recipes')
     .then((response)=>{ 
-      console.log(response.data)
+      console.log("Navbar response",response.data)
       setNavlink(response.data)
     })
   }, [setNavlink])

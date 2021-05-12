@@ -1,26 +1,32 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import RecipeItem from '../recipeItem/RecipeItem';
+import './RecipeList.scss';
 
 export default function RecipeList() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:1337/recipes')
-    .then((response)=>{
-      console.log(response.data);
-      setItems(response.data);
+    .then((response)=>{ 
+      console.log("recipelist response",response.data)
+      setItems(response.data)
     })
-   }, [setItems])
+  }, [setItems])
 
   return (
-    <div>
-      {items.map((item) =>( 
+    <>
+    <h2>More recipes</h2>
+    <div className="recipeList">
+      {items.map((item) => (
         <RecipeItem
-          title={item.title}
-          cookTime={item.cook_time}
-          image={item.images[0].url}
+        key = {item.id}
+        title = {item.title}
+        cookTime = {item.cook_time}
+        image = {item.images[0].url}
         />
-       ))}
+      ))}
     </div>
+    </>
   )
 }
