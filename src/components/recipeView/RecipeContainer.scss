@@ -1,5 +1,6 @@
 .recipeContainer{
   display: grid;
-  // grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  // grid-gap:2rem;
+  overflow-x: scroll;
+  grid-auto-flow: column;
+  grid-gap: 12rem;
 }

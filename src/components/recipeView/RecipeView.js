@@ -2,9 +2,9 @@ import './RecipeView.scss';
 import React from 'react';
 import Nutritional from '../Nutritional/Nutritional';
 
-export default function RecipeView({fat,carbs, protein, ingredients, kcal,title, description}) {
+export default function RecipeView({fat,carbs, protein, ingredients, kcal,title, description, img}) {
   return (
-    <div>
+    <div className="recipeView">
       <h2>{title}</h2>
       <p>{description}</p>
     <div>
@@ -13,9 +13,10 @@ export default function RecipeView({fat,carbs, protein, ingredients, kcal,title,
           <p>{ingredient}</p>
         ))}
     </div>
+    <img src={img} alt="" />
 
       <h3>Nutritional Values</h3>
-      <div className="nutritional__values">
+      <div className="recipeView__nutritional">
         <Nutritional 
         quantity={kcal}
         nutrients="Calories"
