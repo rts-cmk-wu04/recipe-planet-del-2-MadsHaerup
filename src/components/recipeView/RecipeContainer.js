@@ -3,16 +3,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import RecipeView from './RecipeView';
 
-export default function RecipeContainer() {
+export default function RecipeContainer({params}) {
 const [items, setItems] = useState([]);
-const [getvalue, setGetValue] = useState('');
-
-const handleChange = (event) =>{
-setGetValue(event.target)
-}
 
 useEffect(() => {
-  axios.get(`http://localhost:1337/recipes?_where[categories.name]=${handleChange(getvalue)}`)
+  axios.get(params !== '' ? `http://localhost:1337/recipes?_where[categories.name]=${params}` :`http://localhost:1337/recipes` )
   .then((response)=>{
     console.log('RecipeContainer', response.data)
     setItems(response.data)
