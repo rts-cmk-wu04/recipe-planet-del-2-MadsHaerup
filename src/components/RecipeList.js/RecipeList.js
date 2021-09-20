@@ -23,7 +23,7 @@ export default function RecipeList() {
         key = {item.id}
         title = {item.title}
         cookTime = {item.cook_time}
-        image = {item.images[0].url}
+        image = {item.images[0]?.formats?.thumbnail?.url}
         />
       ))}
     </div>

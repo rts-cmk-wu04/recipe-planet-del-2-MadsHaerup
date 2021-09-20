@@ -7,12 +7,12 @@ export default function RecipeContainer({params}) {
 const [items, setItems] = useState([]);
 
 useEffect(() => {
-  axios.get(params !== '' ? `http://localhost:1337/recipes?_where[categories.name]=${params}` :`http://localhost:1337/recipes` )
+  axios.get(params !== undefined ? `http://localhost:1337/recipes?_where[categories.name]=${params}` :`http://localhost:1337/recipes` )
   .then((response)=>{
     console.log('RecipeContainer', response.data)
     setItems(response.data)
   })
-}, [setItems])
+}, [setItems,params])
 
   return (
     <div className="recipeContainer">
@@ -26,9 +26,7 @@ useEffect(() => {
         fat={item.fat}
         carbs={item.carbs}
         protein = {item.protein}
-        kcal = {item.kcal}
-        // img={"http://localhost:1337"+item.images[0].url}
-        
+        kcal = {item.kcal}        
         />
       ))}
     </div>

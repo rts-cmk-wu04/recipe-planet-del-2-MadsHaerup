@@ -7,7 +7,7 @@ export default function Navbar() {
   const [navlink, setNavlink] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:1337/recipes')
+    axios.get('http://localhost:1337/categories')
     .then((response)=>{ 
       console.log("Navbar response",response.data)
       setNavlink(response.data)
@@ -21,8 +21,8 @@ export default function Navbar() {
           <Link to="/">All</Link>
         </li>
        {navlink.map((link) => (
-       <li className="navbar__list__item" key={link.id}>
-         <Link to={`/${link.categories[0].name}`}>{link.categories[0].name}</Link>
+       <li className="navbar__list__item" key={link.id}  >
+         <Link to={`/${link.name}`}>{link.name}</Link>
         </li>
        ))}
       </ul>

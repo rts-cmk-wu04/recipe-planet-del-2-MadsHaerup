@@ -8,9 +8,41 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
 
+  &__title{
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    color:#969696;
+    font-style: italic;
+  }
+
+  &__btn{
+    background-color: #408EBA;
+    color:#fff;
+    border:none;
+    padding: 0.5rem 1rem;
+    width:200px;
+    border-radius: 10px;
+  }
+
   &__nutritional{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap:2rem;
+  }
+  &__ingredients{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    &__ingredient{
+      display: grid;
+      margin-bottom: 2rem;
+
+      &__name{
+        font-weight: bold;
+      }
+      &__amount{
+        line-height: 0;
+        color:#969696;
+      }
+    }
   }
 }

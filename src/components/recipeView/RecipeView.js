@@ -1,19 +1,34 @@
 import './RecipeView.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import Nutritional from '../Nutritional/Nutritional';
+import { Modal } from '../modal/Modal';
 
-export default function RecipeView({fat,carbs, protein, ingredients, kcal,title, description, img}) {
+export default function RecipeView({fat,carbs, protein, ingredients, kcal,title, description, id}) {
+  const [showModal, setShowModal] = useState(false);
+  
+  const openModal = () => {
+		setShowModal((prev) => !prev);
+	};
   return (
     <div className="recipeView">
-      <h2>{title}</h2>
+      <h2 className="recipeView__title">{title}</h2>
       <p>{description}</p>
-    <div>
-      <h3>ingredients</h3>
-        {ingredients?.map((ingredient)=>(
-          <p>{ingredient}</p>
+    <h3 className="recipeView__title">Ingredients</h3>
+    <div className="recipeView__ingredients">
+        {ingredients?.slice(0, 3).map((ingredient)=>(
+          <div className="recipeView__ingredients__ingredient" key={ingredient.name}>
+            <p className="recipeView__ingredients__ingredient__name">{ingredient.name}</p>
+            <span className="recipeView__ingredients__ingredient__amount">{ingredient.amount}</span>
+          </div>
         ))}
     </div>
-    <img src={img} alt="" />
+    <Modal
+      id={id}
+      showModal={showModal}
+      setShowModal={setShowModal}
+      ingredients={ingredients}
+    />
+    <button onClick={openModal} className="recipeView__btn">View all ingredients</button>
 
       <h3>Nutritional Values</h3>
       <div className="recipeView__nutritional">
