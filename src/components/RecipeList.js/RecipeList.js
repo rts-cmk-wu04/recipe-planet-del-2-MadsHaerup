@@ -7,7 +7,7 @@ export default function RecipeList() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:1337/recipes')
+    axios.get('https://roskilde-recipe-api.herokuapp.com/recipes')
     .then((response)=>{ 
       console.log("recipelist response",response.data)
       setItems(response.data)
@@ -23,7 +23,7 @@ export default function RecipeList() {
         key = {item.id}
         title = {item.title}
         cookTime = {item.cook_time}
-        image = {item.images[0]?.formats?.thumbnail?.url}
+        // image = {item.images[0]?.formats.thumbnail.url}
         />
       ))}
     </div>

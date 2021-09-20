@@ -7,7 +7,7 @@ export default function RecipeContainer({params}) {
 const [items, setItems] = useState([]);
 
 useEffect(() => {
-  axios.get(params !== undefined ? `http://localhost:1337/recipes?_where[categories.name]=${params}` :`http://localhost:1337/recipes` )
+  axios.get(params !== undefined ? `https://roskilde-recipe-api.herokuapp.com/recipes?_where[categories.name]=${params}` :`https://roskilde-recipe-api.herokuapp.com/recipes` )
   .then((response)=>{
     console.log('RecipeContainer', response.data)
     setItems(response.data)
@@ -20,6 +20,7 @@ useEffect(() => {
       {items.map((item)=>(
         <RecipeView 
         key={item.id}
+        id={item.id} 
         title={item.title}
         description = {item.description}
         ingredients = {item.ingredients}

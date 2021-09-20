@@ -2,6 +2,7 @@ import './RecipeView.scss';
 import React, { useState } from 'react';
 import Nutritional from '../Nutritional/Nutritional';
 import { Modal } from '../modal/Modal';
+import  {Link} from '@reach/router';
 
 export default function RecipeView({fat,carbs, protein, ingredients, kcal,title, description, id}) {
   const [showModal, setShowModal] = useState(false);
@@ -28,7 +29,10 @@ export default function RecipeView({fat,carbs, protein, ingredients, kcal,title,
       setShowModal={setShowModal}
       ingredients={ingredients}
     />
-    <button onClick={openModal} className="recipeView__btn">View all ingredients</button>
+    <div className="recipeView__buttons" >
+      <button onClick={openModal} className="recipeView__btn">View all ingredients</button>
+      <Link className="recipeView__btn"  to={`/recipes/${id}`}>Show recipe</Link>
+    </div>
 
       <h3>Nutritional Values</h3>
       <div className="recipeView__nutritional">

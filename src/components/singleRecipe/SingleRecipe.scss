@@ -1,5 +1,4 @@
-.recipeView{
-  width:500px;
+.singleRecipe{
   border: 15px solid #fff;
   border-radius: 19px;
   padding: 2rem 2rem;
@@ -7,7 +6,9 @@
   margin-bottom:1rem;
   display: grid;
   grid-template-rows: auto 1fr auto;
-
+  .goback{
+    width:100px;
+  }
   &__buttons{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -25,7 +26,6 @@
     color:#fff;
     border:none;
     padding: 0.5rem 1rem;
-    // width:200px;
     border-radius: 10px;
     text-decoration: none;
     text-align: center;
